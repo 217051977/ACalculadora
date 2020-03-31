@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main2.*
 import java.util.*
 
@@ -30,7 +31,7 @@ class Main2Activity : AppCompatActivity() {
             finish()
         }
 
-        historic_page.setOnItemClickListener { parent, view, position, id ->
+        /*historic_page.addOnItemTouchListener(RecyclerView.OnItemTouchListener)setOnItemClickListener { parent, view, position, id ->
             val element = historic_page.adapter.getItem(position)
 //                val intent = Intent(
 //                    this,
@@ -42,7 +43,7 @@ class Main2Activity : AppCompatActivity() {
                     "${Calendar.getInstance().get(Calendar.MINUTE)}:" +
                     "${Calendar.getInstance().get(Calendar.SECOND)}",
                 Toast.LENGTH_SHORT).show()
-        }
+        }*/
 
     }
 

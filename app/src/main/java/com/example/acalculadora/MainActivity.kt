@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
         updateHistoric()
 
-        if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        /*if (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             list_historic.setOnItemClickListener { parent, view, position, id ->
                 val element = list_historic.adapter.getItem(position)
 //                val intent = Intent(
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 //                startActivity(intent)
                 makeToast("$element ")
             }
-        }
+        }*/
 
     }
 
@@ -170,8 +170,8 @@ class MainActivity : AppCompatActivity() {
     fun onClickShowExpressionToast(view: View) {
 //        view.verticalScrollbarPosition
 //        list_historic.setOnItemClickListener { parent, view, position, id ->
-            val element = list_historic.adapter.getItem(view.verticalScrollbarPosition/*position*/)
-            makeToast("$element ")
+//            val element = list_historic.adapter.getItem(view.verticalScrollbarPosition/*position*/)
+//            makeToast("$element ")
 //        }
     }
 
