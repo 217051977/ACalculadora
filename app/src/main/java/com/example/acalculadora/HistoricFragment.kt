@@ -22,10 +22,10 @@ private var historic: ArrayList<Operation> = arrayListOf(Operation("1+1", 2.0))
 private var HISTORY_KEY = "history"
 class HistoricFragment : Fragment() {
 
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        historic = savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY)!!
-    }
+//    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+//        super.onViewStateRestored(savedInstanceState)
+//        historic = savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY)!!
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +58,7 @@ class HistoricFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 //        val operations = activity?.intent!!.getParcelableArrayListExtra<Operation>(EXTRA_HISTORIC_LIST)
 
-        historic_page.layoutManager = LinearLayoutManager(activity as Context)
+//        historic_page.layoutManager = LinearLayoutManager(activity as Context)
 
 //        historic = savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY) as ArrayList<Operation>
 

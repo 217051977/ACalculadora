@@ -227,36 +227,36 @@ class CalculatorFragment : Fragment() {
 //        }
     }
 
-    @Optional
-    @OnClick(
-        R.id.button_historic
-    )
-    fun onClickSendToHistoricPage(view: View) {
-        makeToast("historic page ")
+//    @Optional
+//    @OnClick(
+//        R.id.button_historic
+//    )
+//    fun onClickSendToHistoricPage(view: View) {
+//        makeToast("historic page ")
+//
+////        communicator = activity as Communicator
+//
+////        communicator.passDataComm(view.historic_page.adapter.getList)
+//
+////        var bundle:Bundle =
+////        bundle.putParcelableArrayList("history", historic)
+//
+//
+////        val intent = Intent(this.activity, HistoricFragment::class.java)
+////        val bundle = Bundle()
+////        bundle.putParcelableArrayList(HISTORY_KEY, historic)
+////        intent.putExtra(HISTORY_KEY, bundle)
+////        startActivity(intent)
+//
+//        NavigationManager.goToHistoricFragment(activity?.supportFragmentManager!!)
+//    }
 
-//        communicator = activity as Communicator
-
-//        communicator.passDataComm(view.historic_page.adapter.getList)
-
-//        var bundle:Bundle =
-//        bundle.putParcelableArrayList("history", historic)
-
-
-//        val intent = Intent(this.activity, HistoricFragment::class.java)
-//        val bundle = Bundle()
-//        bundle.putParcelableArrayList(HISTORY_KEY, historic)
-//        intent.putExtra(HISTORY_KEY, bundle)
-//        startActivity(intent)
-
-        NavigationManager.goToHistoricFragment(activity?.supportFragmentManager!!)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.apply {
-            putParcelableArrayList(HISTORY_KEY, historic)
-        }
-    }
+//    override fun onSaveInstanceState(outState: Bundle) {
+//        super.onSaveInstanceState(outState)
+//        outState.apply {
+//            putParcelableArrayList(HISTORY_KEY, historic)
+//        }
+//    }
 
     fun onClickHistoric(view: View) {
         Log.i(TAG, "Click on button \u23F3")

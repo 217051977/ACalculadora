@@ -27,11 +27,21 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_calculator -> NavigationManager.goToCalculatorFragment(supportFragmentManager)
+            R.id.nav_history -> NavigationManager.goToHistoricFragment(supportFragmentManager)
+            R.id.nav_logout -> finish()
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
 
+    override fun onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else if (supportFragmentManager.backStackEntryCount == 1) {
+            finish()
+        }
+        super.onBackPressed()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
