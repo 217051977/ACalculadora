@@ -34,8 +34,8 @@ class HistoricAdapter(
     class HistoryViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val expression: TextView = view.text_expression
-        val resoult: TextView = view.text_result
 
+        val resoult: TextView = view.text_result
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
@@ -54,5 +54,7 @@ class HistoricAdapter(
     }
 
     override fun getItemCount() = items.size
+
+    fun getList() : MutableList<Operation> = items
 
 }
