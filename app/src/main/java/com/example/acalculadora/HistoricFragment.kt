@@ -1,6 +1,7 @@
 package com.example.acalculadora
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
 import androidx.fragment.app.Fragment
@@ -17,7 +18,14 @@ import java.util.*
 /**
  * A simple [Fragment] subclass.
  */
+private var historic: ArrayList<Operation> = arrayListOf(Operation("1+1", 2.0))
+private var HISTORY_KEY = "history"
 class HistoricFragment : Fragment() {
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        historic = savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY)!!
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,7 +40,12 @@ class HistoricFragment : Fragment() {
             false
         )
 
+//        savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY)
 
+//        val bundle:Bundle = Intent().getBundleExtra(HISTORY_KEY)!!
+//        historic = bundle.getParcelableArrayList<Operation>(HISTORY_KEY)!!
+//
+//        historic = savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY) as ArrayList<Operation>
 
         ButterKnife.bind(
             this,
@@ -47,11 +60,14 @@ class HistoricFragment : Fragment() {
 
         historic_page.layoutManager = LinearLayoutManager(activity as Context)
 
+//        historic = savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY) as ArrayList<Operation>
+
         historic_page.adapter = HistoricAdapter(
             activity as Context,
             R.layout.historic_page,
 //            operations
-            mutableListOf(Operation("5+2", 20.0))
+//            mutableListOf(Operation("5+2", 20.0))
+            historic
         )
     }
 

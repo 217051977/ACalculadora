@@ -1,6 +1,7 @@
 package com.example.acalculadora
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.Nullable
+import androidx.core.view.get
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import butterknife.ButterKnife
@@ -20,13 +22,14 @@ import kotlinx.android.synthetic.main.fragment_calculator.view.*
 import kotlinx.android.synthetic.main.fragment_historic.view.*
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.util.*
+import kotlin.collections.ArrayList
 
 private val TAG = CalculatorFragment::class.java.simpleName
 private var lastCal = "0"
 private var aux = ""
 private var hasCalculated = true
 private var historicMode = false
-private var VISOR_KEY = "visor"
+private var HISTORY_KEY = "history"
 private var historic: ArrayList<Operation> = arrayListOf(Operation("1+1", 2.0))
 const val EXTRA_HISTORIC_LIST = "com.example.acalculator.LIST"
 
@@ -235,7 +238,24 @@ class CalculatorFragment : Fragment() {
 
 //        communicator.passDataComm(view.historic_page.adapter.getList)
 
+//        var bundle:Bundle =
+//        bundle.putParcelableArrayList("history", historic)
+
+
+//        val intent = Intent(this.activity, HistoricFragment::class.java)
+//        val bundle = Bundle()
+//        bundle.putParcelableArrayList(HISTORY_KEY, historic)
+//        intent.putExtra(HISTORY_KEY, bundle)
+//        startActivity(intent)
+
         NavigationManager.goToHistoricFragment(activity?.supportFragmentManager!!)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.apply {
+            putParcelableArrayList(HISTORY_KEY, historic)
+        }
     }
 
     fun onClickHistoric(view: View) {
