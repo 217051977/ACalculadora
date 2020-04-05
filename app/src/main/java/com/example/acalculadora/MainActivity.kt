@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
@@ -21,17 +22,34 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 private val TAG = MainActivity::class.java.simpleName
+private var HISTORY_KEY = "history"
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, Communicator {
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.nav_calculator -> NavigationManager.goToCalculatorFragment(supportFragmentManager)
-            R.id.nav_history -> NavigationManager.goToHistoricFragment(supportFragmentManager)
+            R.id.nav_history -> {
+                NavigationManager.goToHistoricFragment(supportFragmentManager)
+            }
             R.id.nav_logout -> finish()
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    override fun passDataComm(list: ArrayList<Operation>) {
+        val bundle = Bundle()
+        bundle.putParcelableArrayList(HISTORY_KEY, list)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val frag2 = HistoricFragment()
+        frag2.arguments = bundle
+
+        transaction.replace(R.id.frame, frag2)
+        transaction.addToBackStack(null)
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        transaction.commit()
     }
 
     override fun onBackPressed() {

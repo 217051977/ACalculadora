@@ -40,6 +40,8 @@ class HistoricFragment : Fragment() {
             false
         )
 
+        historic = arguments?.getParcelableArrayList<Operation>(HISTORY_KEY)!!
+
 //        savedInstanceState?.getParcelableArrayList<Operation>(HISTORY_KEY)
 
 //        val bundle:Bundle = Intent().getBundleExtra(HISTORY_KEY)!!
